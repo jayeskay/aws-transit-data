@@ -1,3 +1,3 @@
-# Some Other Page
+# Readme
 
-It's still just a test.
+This the GitBook readme file.

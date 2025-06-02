@@ -1,3 +1,3 @@
-# Page
+# Readme
 
-This is just a test.
+This is the front page readme for GitHub, not GitBook.

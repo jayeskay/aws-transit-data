@@ -1,16 +1,21 @@
 # Table of Contents
 
-## Basics
+## Context
 
 * [NYC TLC Data](initial-page.md)
 * [Some Other Page](some-other-page.md)
 
-## Second Grouping
+## Infrastructure
 
-* [Page 1](page1/README.md)
-    * [Page 1 Child 1](page1/page1-1.md)
-    * [Page 1 Child 2](page1/page1-2.md)
+* [README](1_infrastructure/README.md)
+    * [AWS](1_infrastructure/aws.md)
 
-* [Page 2](page2/README.md)
-    * [Page 2 Child 1](page2/page2-1.md)
-    * [Page 2 Child 2](page2/page2-2.md)
+## Orchestration
+
+* [README](2_orchestration/README.md)
+    * [Airflow](2_orchestration/airflow.md)
+
+## Warehouse
+
+* [README](3_warehouse/README.md)
+    * [dbt](3_warehouse/dbt.md)

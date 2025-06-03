@@ -1,11 +1,11 @@
 # Table of Contents
 
-## A first-page group​
+## Basics
 
-* [Initial Page](initial-page.md)
+* [NYC TLC Data](initial-page.md)
 * [Some Other Page](some-other-page.md)
 
-## Use headings to create page groups like this one​
+## Second Grouping
 
 * [Page 1](page1/README.md)
     * [Page 1 Child 1](page1/page1-1.md)

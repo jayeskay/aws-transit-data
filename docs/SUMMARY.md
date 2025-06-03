@@ -8,6 +8,7 @@
 ## Infrastructure
 
 * [AWS](1_infrastructure/aws.md)
+    * [EC2](1_infrastructure/ec2/ec2.md)
 
 ## Orchestration
 

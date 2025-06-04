@@ -1,4 +1,6 @@
-# Table of Contents
+# Table of contents
+
+* [README](README.md)
 
 ## Context
 
@@ -7,9 +9,9 @@
 ## Infrastructure
 
 * [AWS](1_infrastructure/aws.md)
-    * [IAM](1_infrastructure/iam/iam.md)
-    * [S3](1_infrastructure/s3/s3.md)
-    * [EC2](1_infrastructure/ec2/ec2.md)
+  * [IAM](1_infrastructure/iam/iam.md)
+  * [S3](1_infrastructure/s3/s3.md)
+  * [EC2](1_infrastructure/ec2/ec2.md)
 
 ## Orchestration
 

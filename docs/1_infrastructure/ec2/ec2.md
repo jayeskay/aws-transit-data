@@ -1,3 +1,5 @@
+# EC2
+
 Before creating instance, make sure it's in the right organization. I used [this](https://www.youtube.com/watch?v=noeLMJT1duw&t=373s) to help with my org setup.
 
 ```bash
@@ -29,7 +31,9 @@ aws ec2 start-instances --instance-ids i-[identifier] --profile [profile]
 aws ec2 stop-instances --instance-ids i-[identifier] --profile [profile]
 ```
 
-## Describe Instance: IP
+## Describe Instance
+
+This will allow you get the IP address each time you start the instance (and get a new one assigned):
 
 ```bash
 aws ec2 describe-instances --instance-ids i-[identifier] --query 'Reservations[*].Instances[*].[PublicIpAddress]' --profile [profile]

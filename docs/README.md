@@ -14,8 +14,10 @@ The following tools are used for this project:
     - EC2
 - Terraform (IaC)
 - Airflow
-- dbt
 - Snowflake
+- dbt
+- dlt
+- Metabase
 
 ## Processs
 
@@ -72,4 +74,4 @@ dbt models result in the creation of tables or views housed in Redshift, as foll
 
 ## Analysis
 
-The average trip distance and cost across both green and yellow rides is calculated in the final model, as is the cost (in USD) per kilometer.
+The average trip distance and cost across both green and yellow rides is calculated in the final model, as is the cost (in USD) per kilometer. This final calculation will be customizable in the final dashboard (in Metabase).

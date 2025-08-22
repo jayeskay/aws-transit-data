@@ -1,10 +1,6 @@
-# Table of contents
+# Table of Contents
 
-* [README](README.md)
-
-## Context
-
-* [NYC TLC Data](initial-page.md)
+* [START](README.md)
 
 ## Infrastructure
 

@@ -4,10 +4,11 @@
 
 ## Infrastructure
 
+* [Local Deployment](1_infrastructure/local_deployment.md)
 * [AWS](1_infrastructure/aws.md)
-  * [IAM](1_infrastructure/iam/iam.md)
-  * [S3](1_infrastructure/s3/s3.md)
-  * [EC2](1_infrastructure/ec2/ec2.md)
+  * [IAM](1_infrastructure/iam.md)
+  * [S3](1_infrastructure/s3.md)
+  * [EC2](1_infrastructure/ec2.md)
 
 ## Orchestration
 

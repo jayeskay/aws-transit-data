@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/jayeskay/aws-transit-data/issues"
   },
-  "homepage": "https://github.com/jayeskay/aws-transit-data#readme"
+  "homepage": "https://github.com/jayeskay/aws-transit-data#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7"
+  }
 }

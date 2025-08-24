@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"No tests configured\"",
+    "commitlint": "commitlint --edit",
     "prepare": "husky"
   },
   "repository": {
@@ -26,5 +26,30 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "husky": "^9.1.7"
+  },
+  "commitlint": {
+    "rules": {
+      "references-empty": [2, "never"],
+      "type-enum": [
+        2,
+        "always",
+        [
+          "build",
+          "docs",
+          "feat",
+          "fix",
+          "blarg",
+          "ops",
+          "refactor",
+          "revert",
+          "test"
+        ]
+      ]
+    },
+    "parserPreset": {
+      "parserOpts": {
+        "issuePrefixes": ["AWS-"]
+      }
+    }
   }
 }

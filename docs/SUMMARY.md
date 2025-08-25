@@ -2,6 +2,10 @@
 
 * [Overview](README.md)
 
+## DevOps
+
+* [Linting](0_devops/commit_lint.md)
+
 ## Infrastructure
 
 * [Local Deployment](1_infrastructure/local/local_deployment.md)

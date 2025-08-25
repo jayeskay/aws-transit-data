@@ -1,0 +1,54 @@
+{
+  "name": "aws-transit-data",
+  "version": "1.0.0",
+  "description": "[![GitBook](https://img.shields.io/static/v1?message=Documented%20on%20GitBook&logo=gitbook&logoColor=ffffff&label=%20&labelColor=5c5c5c&color=3F89A1)](https://www.gitbook.com/preview?utm_source=gitbook_readme_badge&utm_medium=organic&utm_campaign=preview_documentation&utm_content=link)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "commitlint": "commitlint --edit",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayeskay/aws-transit-data.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jayeskay/aws-transit-data/issues"
+  },
+  "homepage": "https://github.com/jayeskay/aws-transit-data#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7"
+  },
+  "commitlint": {
+    "rules": {
+      "references-empty": [2, "never"],
+      "type-enum": [
+        2,
+        "always",
+        [
+          "build",
+          "docs",
+          "feat",
+          "fix",
+          "ops",
+          "refactor",
+          "revert",
+          "test"
+        ]
+      ]
+    },
+    "parserPreset": {
+      "parserOpts": {
+        "issuePrefixes": ["AWS-"]
+      }
+    }
+  }
+}

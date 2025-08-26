@@ -1,0 +1,16 @@
+# ChatGPT 5 (OpenAI ChatGPT, 2025)
+docs:
+  - changed-files:
+      - any-glob-to-any-file: ["docs/**", "**/*.md"]
+
+infra:
+  - changed-files:
+      - any-glob-to-any-file: ["infrastructure/**", "terraform/**"]
+
+ops:
+  - changed-files:
+      - any-glob-to-any-file: [".github/workflows/**"]
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file: ["**/*test.*", "**/__tests__/**"]

@@ -1,0 +1,19 @@
+# ChatGPT 5 (OpenAI ChatGPT, 2025)
+name: Auto-label PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+
+permissions:
+  contents: read
+  pull-requests: write  # needed to add/remove labels on PRs
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          sync-labels: true  # remove labels if files no longer match after updates
+          configuration-path: .github/labeler.yaml

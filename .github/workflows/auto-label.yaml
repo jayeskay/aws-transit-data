@@ -16,3 +16,4 @@ jobs:
       - uses: actions/labeler@v5
         with:
           sync-labels: true  # remove labels if files no longer match after updates
+          configuration-path: .github/labeler.yaml

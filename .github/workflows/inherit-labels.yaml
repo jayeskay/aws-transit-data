@@ -1,19 +1,19 @@
 name: Copy labels from linked issues
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, edited, review_requested, synchronize, reopened, ready_for_review]
 
+permissions:
+  issues: read
+  contents: read
+  pull-requests: write
+
 jobs:
-  copy-issue-labels:
-    if: github.repository == 'opensearch-project/OpenSearch'
+  inherit-issue-labels:
     runs-on: ubuntu-latest
-    permissions:
-      issues: read
-      contents: read
-      pull-requests: write
     steps:
-      - name: copy-issue-labels
-        uses: michalvankodev/copy-issue-labels@v1.3.0
+      # - name: inherit-issue-labels
+      - uses: michalvankodev/copy-issue-labels@v1.3.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           labels-to-exclude: |

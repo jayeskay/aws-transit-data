@@ -8,7 +8,6 @@
 
 ## Infrastructure
 
-* [Local Deployment](1_infrastructure/local/local_deployment.md)
 * [AWS](1_infrastructure/aws/aws.md)
   * [IAM](1_infrastructure/aws/iam.md)
   * [S3](1_infrastructure/aws/s3.md)

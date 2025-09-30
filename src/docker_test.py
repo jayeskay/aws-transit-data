@@ -1,12 +1,10 @@
 from os import getenv
 
-def ingest():
-    print('Hello, World!')
 
+def main():
     username = getenv('SOMENAME')
-
-    print(username)
+    print(f'Hello, {username}!')
 
 
 if __name__ == '__main__':
-    ingest()
+    main()

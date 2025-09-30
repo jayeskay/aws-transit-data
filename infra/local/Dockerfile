@@ -28,7 +28,7 @@ ENV PATH="/app/.venv/bin:$PATH" \
     UV_LINK_MODE=copy \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    SOMENAME=yourname
+    SOMENAME=Peasant
 
 # change working directory
 WORKDIR /app

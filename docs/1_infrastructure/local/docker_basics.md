@@ -164,6 +164,43 @@ Total reclaimed space: 1.495GB
 
 ## Operations
 
+### Keywords
+
+*Paraphrasing "dockerfile cmd vs entrypoint" AI summary from Google...*
+
+While `CMD` and `ENTRYPOINT` are both issue instructions to run when a container starts, they do different things:
+
+- `CMD` (use it for default arguments)
+  - Provides default commands or arguments for an executing container;
+  - **Easily overridden** by passing arguments to `docker run`, meaning a Dockerfile with `CMD ["echo", "Hello"]` but CLI command of `docker run <image> World` will execute `echo World` instead;
+  - If `ENTRYPOINT` is defined, acts as default arguments to said `ENTRYPOINT`.
+- `ENTRYPOINT` (use it for required executions early on)
+  - Defines main command/executable that **will always run** when the container starts;
+  - Usually used for setting up container's primary process;
+  - **Not easily overridden**.
+
+Arguments passed to `docker run` are **appended** to the `ENTRYPOINT` command as parameters.
+
+To change the `ENTRYPOINT` itself, you need to use the `--entrypoint` flag with docker run.
+
+If both `ENTRYPOINT` and `CMD` are present, `CMD` provides the default arguments to the `ENTRYPOINT`. E.g., if `ENTRYPOINT ["nginx"]` and `CMD ["-g", "daemon off;"]` are defined the result is `nginx -g daemon off;` being executed by default. *Note that these instructions are in exec form.*
+
+Per [Docker blog post](https://www.docker.com/blog/docker-best-practices-choosing-between-run-cmd-and-entrypoint/):
+
+> In the shell form, the command is run in a **subshell**, typically `/bin/sh -c` on Linux systems. This form is useful because it allows shell processing (like **variable expansion**, wildcards, etc.), making it more flexible for certain types of commands (see this shell scripting article for examples of shell processing).
+>
+> However, it also means that the process running your command isn’t the container’s PID 1, which can lead to issues with signal handling because signals sent by Docker (like `SIGTERM` for graceful shutdowns) are received by the shell rather than the intended process.
+> 
+> The exec form **does not invoke a command shell**. This means the command you specify is **executed directly** as the container’s PID 1, which is important for correctly handling signals sent to the container. Additionally, this form **does not perform shell expansions**, so it’s more secure and predictable, especially for specifying arguments or commands from external sources.
+
+Helpful thread on [Stack Overflow](https://stackoverflow.com/questions/47904974/what-are-shell-form-and-exec-form).
+
+Below is an example of how to safely resolve an environment variable in an `ENTRYPOINT` command:
+
+```Dockerfile
+ENTRYPOINT [ "sh", "-c", "echo $SOMENAME" ]
+```
+
 ### Terminal
 
 Interactive pseudo-terminal (PTY/TTY) for specific container, as described [here](https://spacelift.io/blog/docker-exec).

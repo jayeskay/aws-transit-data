@@ -27,14 +27,13 @@ FROM base AS runtime
 ENV PATH="/app/.venv/bin:$PATH" \
     UV_LINK_MODE=copy \
     PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    SOMENAME=Peasant
+    PYTHONUNBUFFERED=1
 
 # change working directory
 WORKDIR /app
 
 # copy .py + reqs files
-COPY src/docker_test.py ./
+COPY src/docker_print.py ./
 
 # execute
-CMD ["uv", "run", "./docker_test.py"]
+CMD ["uv", "run", "./docker_print.py"]

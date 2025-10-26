@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: nyc_tlc
+    database: raw
+    schema: nyc_tlc
+    tables:
+      - name: green_tripdata_201909 # from green_tripdata_2019-09.csv.gz

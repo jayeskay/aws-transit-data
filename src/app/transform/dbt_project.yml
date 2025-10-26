@@ -45,3 +45,5 @@ models:
     # build all models in the example/ directory as views
     example:
       +schema: example
+    staging:
+      +schema: staging

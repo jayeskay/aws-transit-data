@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: int_taxi_locations_joined
+    description: >
+      Location pickup and dropoff IDs joined with lookup ID names
+    columns:
+      - name: blah
+        description: blah

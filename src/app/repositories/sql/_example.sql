@@ -1,10 +1,10 @@
 select
-    locationid as location_id,
-    borough,
-    zone,
+    "LocationID" as location_id,
+    "Borough" as borough,
+    "Zone" as taxi_zone,
     service_zone
 from
-    testing.taxi_zone_lookup
+    public.taxi_zone_lookup
 order by
-    locationid
+    "LocationID"
 limit 100;

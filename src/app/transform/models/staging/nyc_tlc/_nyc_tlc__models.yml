@@ -3,11 +3,3 @@ version: 2
 models:
   - name: stg_nyc_tlc__green_taxi
     description: 'green taxi data'
-    columns:
-      - name: blah
-        description: blah
-  - name: stg_nyc_tlc__yellow_taxi
-    description: 'yellow taxi data'
-    columns:
-      - name: blah
-        description: blah

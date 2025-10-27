@@ -4,18 +4,18 @@ green_taxi as (
     select
         *
     from
-        {{ source('nyc_tlc', 'green_taxi') }}
+        {{ source('nyc_tlc', 'green_tripdata_201909') }}
 ),
 
 final as (
     select
-        vendorid as vendor_id,
+        "VendorID" as vendor_id,
         lpep_pickup_datetime as pickup_datetime,
         lpep_dropoff_datetime as dropoff_datetime,
         store_and_fwd_flag,
-        ratecodeid as rate_code_id,
-        pulocationid as pickup_location_id,
-        dolocationid as dropoff_location_id,
+        "RatecodeID" as rate_code_id,
+        "PULocationID" as pickup_location_id,
+        "DOLocationID" as dropoff_location_id,
         passenger_count,
         trip_distance,
         fare_amount,

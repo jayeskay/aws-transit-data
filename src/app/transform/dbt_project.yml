@@ -29,6 +29,5 @@ models:
   transit:
     +materialized: view
 
-    # build all models in the example/ directory as views
     example:
       +schema: example

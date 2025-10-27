@@ -1,0 +1,33 @@
+name: 'transit'
+version: '1.0.0'
+
+# set "profile" dbt uses for project
+profile: postgres
+
+# disable usage stats
+# documentation: https://docs.getdbt.com/reference/global-configs/usage-stats
+flags:
+  send_anonymous_usage_stats: false
+
+# specify where dbt should look for different types of files
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# directories to be removed by `dbt clean`
+clean-targets:
+  - 'target'
+  - 'dbt_packages'
+
+# ===== model configs =====
+# documentation: https://docs.getdbt.com/docs/configuring-models
+models:
+
+  transit:
+    +materialized: view
+
+    example:
+      +schema: example

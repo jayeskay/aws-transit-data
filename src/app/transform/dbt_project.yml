@@ -42,9 +42,10 @@ vars:
 models:
 
   transit:
-    +materialized: view
 
     example:
+      +materialized: view
       +schema: example
     staging:
+      +materialized: view
       +schema: staging

@@ -4,7 +4,7 @@
 [sqlfluff:indentation]
 # See https://docs.sqlfluff.com/en/stable/perma/indent_locations.html
 indented_joins = True
-indented_ctes = True
+indented_ctes = False
 indented_using_on = True
 indented_on_contents = True
 indented_then = True

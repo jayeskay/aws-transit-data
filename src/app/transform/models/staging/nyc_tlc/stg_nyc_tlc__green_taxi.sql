@@ -10,9 +10,8 @@ green_taxi as (
 final as (
     select
         "VendorID" as vendor_id,
-        lpep_pickup_datetime as pickup_datetime,
-        lpep_dropoff_datetime as dropoff_datetime,
-        store_and_fwd_flag,
+        lpep_pickup_datetime::timestamp as pickup_datetime,
+        lpep_dropoff_datetime::timestamp as dropoff_datetime,
         "RatecodeID" as rate_code_id,
         "PULocationID" as pickup_location_id,
         "DOLocationID" as dropoff_location_id,
@@ -28,9 +27,13 @@ final as (
         total_amount,
         payment_type,
         trip_type,
-        congestion_surcharge
+        congestion_surcharge,
+        coalesce(store_and_fwd_flag = 'Y', false) as store_and_fwd
     from
         green_taxi
 )
 
-select * from final
+select
+    *
+from
+    final

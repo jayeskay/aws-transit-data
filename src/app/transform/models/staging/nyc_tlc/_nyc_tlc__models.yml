@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: stg_nyc_tlc__green_taxi
+    description: >
+      Green taxi data from NYC Taxi and Limousine Commission ("TLC"), as per
+      https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_green.pdf
+
+    columns:
+      - name: vendor_id
+        description: |
+          A code indicating the LPEP provider that provided the record:
+          - 1 = Creative Mobile Technologies, LLC
+          - 2 = Curb Mobility, LLC
+          - 6 = Myle Technologies Inc
+      - name: pickup_datetime
+        description: The date and time when the meter was engaged
+      - name: dropoff_datetime
+        description: The date and time when the meter was disengaged
+      - name: rate_code_id
+        description: |
+          The final rate code in effect at the end of the trip:
+          - 1 = standard rate
+          - 2 = JFK
+          - 3 = Newark
+          - 4 = Nassau or Westchester
+          - 5 = negotiated fare
+          - 6 = group ride
+          - 99 = null or unknown
+      - name: pickup_location_id
+        description: TLC Taxi Zone in which the taximeter was engaged
+      - name: dropoff_location_id
+        description: TLC Taxi Zone in which the taximeter was disengaged
+      - name: passenger_count
+        description: Number of passengers in the vehicle
+      - name: trip_distance
+        description: Elapsed trip distance in miles reported by the taximeter
+      - name: fare_amount
+        description: Time-and-distance fare calculated by the meter
+      - name: extra
+        description: Miscellaneous extras and surcharges
+      - name: mta_tax
+        description: Tax that is automatically triggered based on the metered rate in use
+      - name: tip_amount
+        description: >
+          Automatically populated for credit card tips; cash tips not included
+      - name: tolls_amount
+        description: Total amount of all tolls paid in trip
+      - name: ehail_fee
+        description: UNDEFINED
+      - name: improvement_surcharge
+        description: Improvement surcharge assessed trips at the flag drop (est. 2015)
+      - name: total_amount
+        description: Final amount charged to passengers, excluding cash tips
+      - name: payment_type
+        description: |
+          Numeric code signifying how the passenger paid for the trip:
+          - 0 = Flex Fare trip
+          - 1 = Credit card
+          - 2 = Cash
+          - 3 = No charge
+          - 4 = Dispute
+          - 5 = Unknown
+          - 6 = Voided trip
+      - name: trip_type
+        description: |
+          Code indicating whether the trip was a street-hail or a dispatch
+          automatically assigned based on the metered rate in use; can be altered
+          by the driver:
+          - 1 = Street-hail
+          - 2 = Dispatch
+      - name: congestion_surcharge
+        description: Amount collected in trip for NYS congestion surcharge
+      - name: store_and_fwd
+        description: >
+          Indicates whether the trip record was held in vehicle memory before
+          sending to the vendor (AKA "store and forward") because the vehicle
+          did not have a connection to the server

@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: taxi
+    description: "{{ doc('taxi_table_description') }}"
+    columns:
+      - name: pickup_datetime
+      - name: dropoff_datetime
+      - name: pickup_borough
+      - name: pickup_zone
+      - name: pickup_service_zone
+      - name: dropoff_borough
+      - name: dropoff_zone
+      - name: dropoff_service_zone
+      - name: payment_type
+      - name: trip_type
+      - name: taxi_type
+      - name: passenger_count
+      - name: trip_distance
+      - name: fare_amount
+      - name: total_amount
+      - name: congestion_surcharge
+      - name: store_and_fwd

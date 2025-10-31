@@ -25,6 +25,7 @@ select
     green_taxi.store_and_fwd
 from
     {{ ref('stg_nyc_tlc__green_taxi') }} as green_taxi
-    left join public.taxi_zone_lookup as zones
+    inner join public.taxi_zone_lookup as zones
         on
             green_taxi.pickup_location_id = zones."LocationID"
+            and zones."Borough" != 'Unknown'

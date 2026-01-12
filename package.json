@@ -44,6 +44,19 @@
           "revert",
           "test"
         ]
+      ],
+      "scope-empty": [1, "never"],
+      "scope-enum": [
+        2,
+        "always",
+        [
+          "extract",
+          "transform",
+          "load",
+          "data",
+          "schema",
+          "infra"
+        ]
       ]
     },
     "parserPreset": {

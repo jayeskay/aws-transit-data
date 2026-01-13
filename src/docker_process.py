@@ -1,6 +1,8 @@
 import os
 import pandas as pd
+import pyarrow as pa
 from pathlib import Path
+from pyarrow.parquet import ParquetFile
 from sqlalchemy import create_engine
 
 USERNAME = os.getenv('POSTGRES_USER')
@@ -33,7 +35,21 @@ def ingest():
             # push to table
             table_name = item.split('.')[0].replace('-','')
             print(f'{table_name=}')
-            df.to_sql(table_name, engine, if_exists='replace', index=False) 
+            df.to_sql(table_name, engine, if_exists='replace', index=False)
+
+        elif file_path.suffix == '.parquet':
+            print(f"READING PARQUET: {file_path}")
+
+            # read parquet
+            pf = ParquetFile(file_path)
+            pf = next(pf.iter_batches(batch_size=100))
+            df = pa.Table.from_batches([pf]).to_pandas()
+            print(df.info())
+
+            # push to table
+            table_name = item.split('.')[0].replace('-','')
+            print(f'{table_name=}')
+            df.to_sql(table_name, engine, if_exists='replace', index=False)
 
 
 if __name__ == '__main__':

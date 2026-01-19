@@ -1,3 +1,7 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
-    {{ custom_schema_name if custom_schema_name is not none else target.schema }}
+    {%- if target.name == 'prod' -%}
+        {{ custom_schema_name | trim }}
+    {%- else -%}
+        {{ target.schema }}_{{ custom_schema_name | trim }}
+    {%- endif -%}
 {%- endmacro %}

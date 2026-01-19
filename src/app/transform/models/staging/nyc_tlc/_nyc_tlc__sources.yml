@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: nyc_tlc
-    schema: public
+    schema: raw
     tables:
+      - name: taxi_zone_lookup
       - name: green_tripdata_201909 # from green_tripdata_2019-09.csv.gz

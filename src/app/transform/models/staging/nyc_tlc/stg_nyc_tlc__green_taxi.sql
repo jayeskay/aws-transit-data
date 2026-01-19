@@ -1,13 +1,13 @@
 with
 
-green_taxi as (
-    select
-        *
-    from
-        {{ source('nyc_tlc', 'green_tripdata_201909') }}
+import_green_taxi as (
+
+    select * from {{ source('nyc_tlc', 'green_tripdata_201909') }}
+
 ),
 
 final as (
+
     select
         "VendorID" as vendor_id,
         lpep_pickup_datetime::timestamp as pickup_datetime,
@@ -30,10 +30,8 @@ final as (
         congestion_surcharge,
         coalesce(store_and_fwd_flag = 'Y', false) as store_and_fwd
     from
-        green_taxi
+        import_green_taxi
+
 )
 
-select
-    *
-from
-    final
+select * from final

@@ -10,8 +10,8 @@ final as (
 
     select
         "VendorID" as vendor_id,
-        lpep_pickup_datetime::timestamp as pickup_datetime,
-        lpep_dropoff_datetime::timestamp as dropoff_datetime,
+        lpep_pickup_datetime::timestamp as pickup_at,
+        lpep_dropoff_datetime::timestamp as dropoff_at,
         "RatecodeID" as rate_code_id,
         "PULocationID" as pickup_location_id,
         "DOLocationID" as dropoff_location_id,
@@ -28,7 +28,8 @@ final as (
         payment_type,
         trip_type,
         congestion_surcharge,
-        coalesce(store_and_fwd_flag = 'Y', false) as store_and_fwd
+        coalesce(store_and_fwd_flag = 'Y', false) as store_and_forward,
+        'green' as taxi_type
     from
         import_green_taxi
 

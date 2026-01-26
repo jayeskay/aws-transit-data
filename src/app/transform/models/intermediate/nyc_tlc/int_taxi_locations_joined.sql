@@ -16,8 +16,8 @@ joined as (
 
     select
         green_taxi.vendor_id,
-        green_taxi.pickup_datetime,
-        green_taxi.dropoff_datetime,
+        green_taxi.pickup_at,
+        green_taxi.dropoff_at,
         green_taxi.rate_code_id,
         zones."Borough" as pickup_borough,
         zones."Zone" as pickup_zone,
@@ -38,7 +38,8 @@ joined as (
         green_taxi.payment_type,
         green_taxi.trip_type,
         green_taxi.congestion_surcharge,
-        green_taxi.store_and_fwd
+        green_taxi.store_and_forward,
+        green_taxi.taxi_type
     from
         import_green_taxi as green_taxi
     inner join import_zones as zones on

@@ -13,9 +13,9 @@ models:
           - 1 = Creative Mobile Technologies, LLC
           - 2 = Curb Mobility, LLC
           - 6 = Myle Technologies Inc
-      - name: pickup_datetime
+      - name: pickup_at
         description: The date and time when the meter was engaged
-      - name: dropoff_datetime
+      - name: dropoff_at
         description: The date and time when the meter was disengaged
       - name: rate_code_id
         description: |
@@ -71,7 +71,7 @@ models:
           - 2 = Dispatch
       - name: congestion_surcharge
         description: Amount collected in trip for NYS congestion surcharge
-      - name: store_and_fwd
+      - name: store_and_forward
         description: >
           Indicates whether the trip record was held in vehicle memory before
           sending to the vendor (AKA "store and forward") because the vehicle

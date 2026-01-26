@@ -24,7 +24,7 @@ final as (
         fare_amount,
         total_amount,
         congestion_surcharge,
-        store_and_forward
+        is_store_and_forward
     from
         import_green_trips
 

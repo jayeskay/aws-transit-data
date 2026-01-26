@@ -9,12 +9,16 @@ import_green_taxi as (
 final as (
 
     select
+        -- ids
         "VendorID" as vendor_id,
-        lpep_pickup_datetime::timestamp as pickup_at,
-        lpep_dropoff_datetime::timestamp as dropoff_at,
         "RatecodeID" as rate_code_id,
         "PULocationID" as pickup_location_id,
         "DOLocationID" as dropoff_location_id,
+
+        -- strings
+        'green' as taxi_type,
+
+        -- numerics
         passenger_count,
         trip_distance,
         fare_amount,
@@ -28,8 +32,17 @@ final as (
         payment_type,
         trip_type,
         congestion_surcharge,
-        coalesce(store_and_fwd_flag = 'Y', false) as store_and_forward,
-        'green' as taxi_type
+
+        -- booleans
+        coalesce(store_and_fwd_flag = 'Y', false) as is_store_and_forward,
+
+        -- dates
+        -- (none)
+
+        -- timestamps
+        lpep_pickup_datetime::timestamp as pickup_at,
+        lpep_dropoff_datetime::timestamp as dropoff_at
+
     from
         import_green_taxi
 

@@ -2,7 +2,7 @@ with
 
 import_green_taxi as (
 
-    select * from {{ ref('stg_nyc_tlc__green_taxi') }}
+    select * from {{ ref('stg_nyc_tlc__green_taxi_trips') }}
 
 ),
 

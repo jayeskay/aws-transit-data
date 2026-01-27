@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: taxi
+  - name: taxi_trips
     description: "{{ doc('taxi_table_description') }}"
     columns:
       - name: pickup_datetime

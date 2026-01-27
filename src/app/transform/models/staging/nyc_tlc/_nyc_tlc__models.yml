@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_nyc_tlc__green_taxi
+  - name: stg_nyc_tlc__green_taxi_trips
     description: >
       Green taxi data from NYC Taxi and Limousine Commission ("TLC"), as per
       https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_green.pdf

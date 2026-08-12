@@ -62,6 +62,12 @@ models:
           - 4 = Dispute
           - 5 = Unknown
           - 6 = Voided trip
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5, 6]
+                quote: false
+              severity: warn
       - name: trip_type
         description: |
           Code indicating whether the trip was a street-hail or a dispatch

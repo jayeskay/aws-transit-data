@@ -6,3 +6,4 @@ sources:
     tables:
       - name: taxi_zone_lookup
       - name: green_tripdata_201909 # from green_tripdata_2019-09.csv.gz
+      - name: yellow_tripdata_201909 # from yellow_tripdata_2019-09.parquet

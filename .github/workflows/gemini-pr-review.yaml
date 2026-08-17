@@ -17,6 +17,8 @@ jobs:
     if: github.event_name == 'pull_request' || contains(github.event.comment.body, '@gemini-cli')
     steps:
       - uses: actions/checkout@v4
+      - name: Set env
+        run: echo 'GEMINI_CLI_TRUST_WORKSPACE=true'
       - uses: google-github-actions/run-gemini-cli@v0
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}

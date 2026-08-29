@@ -11,8 +11,33 @@ DATABASE = os.getenv('POSTGRES_DATABASE_DEV')
 SCHEMA   = 'raw'
 URL      = f'postgresql://{USERNAME}:{PASSWORD}@pgdatabase:5432/{DATABASE}'
 
-def ingest():
-    print('Let\'s get started!')
+
+def load_contents(df, item, engine) -> None:
+    # print data info to log
+    print(df.info())
+
+    # define table name
+    table_name = item.split('.')[0].replace('-','')
+    print(f'{table_name=}')
+
+    with engine.connect() as conn:
+        conn.execute(text(f'drop table if exists {SCHEMA}.{table_name} cascade;'))
+        conn.commit()
+
+    # push to table
+    df.to_sql(
+        name=table_name,
+        con=engine,
+        schema=SCHEMA,
+        if_exists='replace',
+        index=False
+    )
+
+    return None
+
+
+def main():
+    print("Let's get started!")
     print(os.environ)
 
     # create postgres engine
@@ -32,43 +57,21 @@ def ingest():
         file_path = cwd / 'data' / item
 
         if file_path.suffix == '.csv':
-            print(f"READING CSV: {file_path}")
-
             # read csv
             df = pd.read_csv(file_path, nrows=100)
-            print(df.info())
 
             # push to table
-            table_name = item.split('.')[0].replace('-','')
-            print(f'{table_name=}')
-            df.to_sql(
-                table_name,
-                engine,
-                schema=SCHEMA,
-                if_exists='replace',
-                index=False
-            )
+            load_contents(df, item, engine)
 
         elif file_path.suffix == '.parquet':
-            print(f"READING PARQUET: {file_path}")
-
             # read parquet
             pf = ParquetFile(file_path)
             pf = next(pf.iter_batches(batch_size=100))
             df = pa.Table.from_batches([pf]).to_pandas()
-            print(df.info())
 
             # push to table
-            table_name = item.split('.')[0].replace('-','')
-            print(f'{table_name=}')
-            df.to_sql(
-                table_name,
-                engine,
-                schema=SCHEMA,
-                if_exists='replace',
-                index=False
-            )
+            load_contents(df, item, engine)
 
 
 if __name__ == '__main__':
-    ingest()
+    main()

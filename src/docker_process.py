@@ -36,7 +36,7 @@ def load_contents(df, item, engine) -> None:
     return None
 
 
-def main():
+def main() -> None:
     print("Let's get started!")
     print(os.environ)
 
@@ -55,22 +55,28 @@ def main():
     for item in os.listdir('data/'):
         # create new path by joining components
         file_path = cwd / 'data' / item
+        file_type = file_path.suffix
 
-        if file_path.suffix == '.csv':
+        print(f"Reading {file_type}: {file_path}")
+
+        if file_type == '.csv':
             # read csv
             df = pd.read_csv(file_path, nrows=100)
 
-            # push to table
             load_contents(df, item, engine)
 
-        elif file_path.suffix == '.parquet':
+        elif file_type == '.parquet':
             # read parquet
             pf = ParquetFile(file_path)
             pf = next(pf.iter_batches(batch_size=100))
             df = pa.Table.from_batches([pf]).to_pandas()
 
-            # push to table
             load_contents(df, item, engine)
+
+        else:
+            pass
+
+    return None
 
 
 if __name__ == '__main__':

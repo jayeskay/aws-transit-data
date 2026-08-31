@@ -1,15 +1,16 @@
 import os
+from pathlib import Path
+
 import pandas as pd
 import pyarrow as pa
-from pathlib import Path
 from pyarrow.parquet import ParquetFile
 from sqlalchemy import create_engine, text
 
 USERNAME = os.getenv('POSTGRES_USER')
 PASSWORD = os.getenv('POSTGRES_PASSWORD')
 DATABASE = os.getenv('POSTGRES_DATABASE_DEV')
-SCHEMA   = 'raw'
-URL      = f'postgresql://{USERNAME}:{PASSWORD}@pgdatabase:5432/{DATABASE}'
+SCHEMA = 'raw'
+URL = f'postgresql://{USERNAME}:{PASSWORD}@pgdatabase:5432/{DATABASE}'
 
 
 def load_contents(df, item, engine) -> None:
@@ -30,10 +31,8 @@ def load_contents(df, item, engine) -> None:
         con=engine,
         schema=SCHEMA,
         if_exists='replace',
-        index=False
+        index=False,
     )
-
-    return None
 
 
 def main() -> None:
@@ -75,8 +74,6 @@ def main() -> None:
 
         else:
             pass
-
-    return None
 
 
 if __name__ == '__main__':

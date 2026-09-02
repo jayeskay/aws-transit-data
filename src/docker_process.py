@@ -60,14 +60,14 @@ def main() -> None:
 
         if file_type == '.csv':
             # read csv
-            df = pd.read_csv(file_path, nrows=100)
+            df = pd.read_csv(file_path, nrows=100000)
 
             load_contents(df, item, engine)
 
         elif file_type == '.parquet':
             # read parquet
             pf = ParquetFile(file_path)
-            pf = next(pf.iter_batches(batch_size=100))
+            pf = next(pf.iter_batches(batch_size=100000))
             df = pa.Table.from_batches([pf]).to_pandas()
 
             load_contents(df, item, engine)

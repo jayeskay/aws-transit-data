@@ -1,3 +1,4 @@
+import logging
 import os
 from pathlib import Path
 
@@ -5,6 +6,10 @@ import pandas as pd
 import pyarrow as pa
 from pyarrow.parquet import ParquetFile
 from sqlalchemy import create_engine, text
+
+logging.basicConfig(
+    level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s'
+)
 
 USERNAME = os.getenv('POSTGRES_USER')
 PASSWORD = os.getenv('POSTGRES_PASSWORD')
@@ -15,11 +20,11 @@ URL = f'postgresql://{USERNAME}:{PASSWORD}@pgdatabase:5432/{DATABASE}'
 
 def load_contents(df, item, engine) -> None:
     # print data info to log
-    print(df.info())
+    logging.info(df.info())
 
     # define table name
     table_name = item.split('.')[0].replace('-','')
-    print(f'{table_name=}')
+    logging.info(f'{table_name=}')
 
     with engine.connect() as conn:
         conn.execute(text(f'drop table if exists {SCHEMA}.{table_name} cascade;'))
@@ -36,16 +41,15 @@ def load_contents(df, item, engine) -> None:
 
 
 def main() -> None:
-    print("Let's get started!")
-    print(os.environ)
+    logging.info("Starting ingestion.")
+    logging.info(f'{os.environ=}')
 
     # create postgres engine
-    print(f'{URL=}')
     engine = create_engine(URL)
 
     # create Path object for the current working directory
     cwd = Path.cwd()
-    print(f'{cwd.resolve()=}')
+    logging.info(f'{cwd.resolve()=}')
 
     with engine.connect() as conn:
         conn.execute(text(f'create schema if not exists {SCHEMA};'))
@@ -56,20 +60,21 @@ def main() -> None:
         file_path = cwd / 'data' / item
         file_type = file_path.suffix
 
-        print(f"Reading {file_type}: {file_path}")
+        logging.info(f"Reading {file_path}")
 
         if file_type == '.csv':
-            # read csv
+            logging.info('---')
             df = pd.read_csv(file_path, nrows=100000)
 
+            # load to postgres
             load_contents(df, item, engine)
 
         elif file_type == '.parquet':
-            # read parquet
             pf = ParquetFile(file_path)
             pf = next(pf.iter_batches(batch_size=100000))
             df = pa.Table.from_batches([pf]).to_pandas()
 
+            # load to postgres
             load_contents(df, item, engine)
 
         else:

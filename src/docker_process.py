@@ -63,7 +63,6 @@ def main() -> None:
         logging.info(f"Reading {file_path}")
 
         if file_type == '.csv':
-            logging.info('---')
             df = pd.read_csv(file_path, nrows=100000)
 
             # load to postgres

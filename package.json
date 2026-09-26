@@ -36,12 +36,14 @@
         "always",
         [
           "build",
+          "chore",
           "docs",
           "feat",
           "fix",
           "ops",
           "refactor",
           "revert",
+          "style",
           "test"
         ]
       ],
@@ -50,12 +52,12 @@
         2,
         "always",
         [
-          "extract",
+          "config",
+          "ingestion",
+          "orchestration",
+          "quality",
           "transform",
-          "load",
-          "data",
-          "schema",
-          "infra"
+          "warehouse"
         ]
       ]
     },

@@ -70,3 +70,8 @@ dependencies = [
     "zipp>=3.23.0",
     "zstandard>=0.24.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.5",
+]

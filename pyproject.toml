@@ -75,3 +75,11 @@ dependencies = [
 dev = [
     "ruff>=0.16.5",
 ]
+
+[tool.ruff.lint]
+select = [
+    "E",        # PyCodeStyle errors
+    "W",        # PyCodeStyle warnings
+    "F",        # Pyflakes rules
+    "I",        # Sort imports
+]

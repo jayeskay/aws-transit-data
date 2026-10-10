@@ -46,10 +46,10 @@ COPY --from=builder /app/.venv /app/.venv
 COPY data/ ./data
 
 # unzip
-RUN gzip -d ./data/green_tripdata_2019-09.csv.gz
+RUN gzip -d ./data/raw/nyc_tlc/green/green_tripdata_2019-09.csv.gz
 
 # copy .py files
-COPY src/ ./src
+COPY infra/local/ingest.py ./ingest.py
 
 # execute
-CMD ["uv", "run", "./src/docker_process.py"]
+CMD ["uv", "run", "./ingest.py"]
